@@ -27,6 +27,7 @@ def cli():
     Example project: https://github.com/ahmed-shariff/CanHap501_Lab_2.git
 
     """
+    print("Getting files")
     root_dir = Path().parent.absolute()
 
     files_list_f = Path("files_list.csv")
@@ -44,6 +45,7 @@ def cli():
                     print()
             
 
+    print("\nSetting up sketch directories")
     java_files = root_dir.glob("*.java")
                     
     for pde_file in root_dir.glob("*/*.pde"):
