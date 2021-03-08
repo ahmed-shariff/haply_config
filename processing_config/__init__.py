@@ -44,13 +44,14 @@ def cli():
                     wget.download(file_entry["link"], out=file_entry["file_name"])
                     print()
             
-
-    print("\nSetting up sketch directories")
-    java_files = root_dir.glob("*.java")
+    java_files = [p.name for p in root_dir.glob("*.java")]
+    if len(java_files) > 0:
+        print("\nJava files found: ", *["  " + file_name for file_name in java_files], sep="\n")
                     
+    print("\nSetting up sketch directories")
     for pde_file in root_dir.glob("*/*.pde"):
         sketch_root = pde_file.parent
-        print("Found pde file: {}".format(pde_file.relative_to(root_dir)))
+        print("\nFound pde file: {}".format(pde_file.relative_to(root_dir)))
         
         if (sketch_root / "code").exists():
             print("  `code` exists")
